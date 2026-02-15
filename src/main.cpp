@@ -64,7 +64,7 @@ int main()
         }
 
         threads[0].join();
-        auto config = ConfigLoader::load("config/config.txt");
+        auto config = ConfigLoader::load("../config/config.txt");
 
         std::cout << "======= DATA =======\n";
         std::cout << "cycles: " << config.at("cycles") << "\n";

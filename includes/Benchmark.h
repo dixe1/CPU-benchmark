@@ -19,12 +19,15 @@ private:
     const std::unordered_map<std::string, std::string> config = ConfigLoader::load("../config/config.txt");
     void calculate(size_t threads)
     {
-        const uint64_t cycles = std::floor(std::stoi(config.at("cycles")) / threads);
+        const uint64_t cycles = std::floor(std::stoull(config.at("cycles")) / threads);
+        double numConverted = std::stod(config.at("num"));
 
         double j{};
+        double sum{};
         for (uint64_t i{}; i < cycles; i++)
         {
-            volatile double r = std::sin(std::stod(config.at("num")) + j + 1);
+            volatile double r = std::sin(numConverted + j + 1);
+            sum += r;
             j += 0.001;
         }
     }
