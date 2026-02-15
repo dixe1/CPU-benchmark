@@ -56,7 +56,8 @@ private:
     static void checkFile(const std::fstream& file)
     {
         if (!file.is_open())
-            throw std::runtime_error("Error opening file");
+            // throw std::runtime_error("Error opening file"); default
+            throw std::runtime_error("Config not found, missing config/config.txt");
 
         if (!file.good())
             throw std::runtime_error("Error file not good");

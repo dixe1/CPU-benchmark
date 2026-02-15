@@ -27,16 +27,28 @@ Edit config/config.txt to adjust benchmarking parameters:
 cycles: Total iterations to perform  
 num: Base number used in computation
 
-## Installation
+## Build
 
-1. Clone the repository:
-
+### 1. Clone the repository
 ```bash
 git clone https://github.com/dixe1/CPU-Benchmark.git
 cd CPU-Benchmark
+```
 
-mkdir build
-cd build
-cmake ..
-cmake --build
+### 2. Build Project
+
+#### For Visual Studio 2022:
+```bash
+cmake -G "Visual Studio 17 2022" -A x64 . -B build
+```
+
+#### For Visual Studio 2019:
+```bash
+cmake -G "Visual Studio 16 2019" -A x64 . -B build
+```
+
+#### For Linux / macOS (Unix Makefiles):
+```bash
+cmake -G "Unix Makefiles" -B build
+cmake --build build
 ```
