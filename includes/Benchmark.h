@@ -16,19 +16,21 @@ class Benchmark
 {
 private:
     const std::unordered_map<std::string, std::string> config = ConfigLoader::load("../config/config.txt");
-    void calculate(size_t threads)
+    double calculate(const size_t threads) const
     {
         const uint64_t cycles = std::floor(std::stoull(config.at("cycles")) / threads);
-        double numConverted = std::stod(config.at("num"));
+        const double num = std::stod(config.at("num"));
 
         double j{};
         double sum{};
         for (uint64_t i{}; i < cycles; i++)
         {
-            volatile double r = std::sin(numConverted + j + 1);
+            const volatile double r = std::sin(num + j + 1);
             sum += r;
             j += 0.001;
         }
+
+        return sum; // To stop compiler optimising code
     }
 
 public:
@@ -40,17 +42,17 @@ public:
         std::vector<std::thread> threads;
         threads.reserve(threadsToUse);
 
-        auto start = std::chrono::high_resolution_clock::now();
+        const auto start = std::chrono::high_resolution_clock::now();
         for (size_t i{}; i < threadsToUse; i++)
             threads.emplace_back(&Benchmark::calculate, this, threadsToUse);
 
         for (auto& thread : threads)
             thread.join();
 
-        auto end = std::chrono::high_resolution_clock::now();
+        const auto end = std::chrono::high_resolution_clock::now();
 
-        std::chrono::duration<double> duration_ = end - start;
-        isWorking = false;
+        const std::chrono::duration<double> duration_ = end - start;
         duration = duration_.count();
+        isWorking = false;
     };
 };

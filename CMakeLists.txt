@@ -8,4 +8,6 @@ add_executable(Benchmark src/main.cpp
         includes/GetUserInput.h
         includes/ClearTerminal.h
         includes/Benchmark.h
+        includes/PrintAndSaveResult.h
+        includes/LoadingBar.h
 )
