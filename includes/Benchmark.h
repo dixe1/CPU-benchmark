@@ -8,6 +8,7 @@
 #include <thread>
 #include <chrono>
 #include <cmath>
+#include <atomic>
 
 #include "../includes/Benchmark.h"
 #include "../includes/ConfigLoader.h"
@@ -18,17 +19,22 @@ private:
     const std::unordered_map<std::string, std::string> config = ConfigLoader::load("../config/config.txt");
     void calculate(size_t threads)
     {
-        const uint32_t cycles = std::floor(std::stoi(config.at("cycles")) / threads);
+        const uint64_t cycles = std::floor(std::stoi(config.at("cycles")) / threads);
 
-        for (uint32_t i{}; i < cycles; i++)
+        double j{};
+        for (uint64_t i{}; i < cycles; i++)
         {
-            volatile double r = std::pow(std::stod(config.at("num1")), std::stod(config.at("num2")));
+            volatile double r = std::sin(std::stod(config.at("num")) + j + 1);
+            j += 0.001;
         }
     }
 
 public:
-    double startBenchmark(size_t threadsToUse)
+    double duration{};
+
+    void startBenchmark(size_t threadsToUse, std::atomic<bool>& isWorking)
     {
+        isWorking = true;
         std::vector<std::thread> threads;
         threads.reserve(threadsToUse);
 
@@ -41,7 +47,8 @@ public:
 
         auto end = std::chrono::high_resolution_clock::now();
 
-        std::chrono::duration<double> duration = end - start;
-        return duration.count();
+        std::chrono::duration<double> duration_ = end - start;
+        isWorking = false;
+        duration = duration_.count();
     };
 };
