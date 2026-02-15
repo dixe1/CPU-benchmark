@@ -10,7 +10,6 @@
 #include <cmath>
 #include <atomic>
 
-#include "../includes/Benchmark.h"
 #include "../includes/ConfigLoader.h"
 
 class Benchmark
