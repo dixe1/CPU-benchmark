@@ -15,7 +15,7 @@
 class Benchmark
 {
 private:
-    const std::unordered_map<std::string, std::string> config = ConfigLoader::load("../config/config.txt");
+    const std::unordered_map<std::string, std::string> config = ConfigLoader::load("config/config.txt");
     double calculate(const size_t threads) const
     {
         const uint64_t cycles = std::floor(std::stoull(config.at("cycles")) / threads);

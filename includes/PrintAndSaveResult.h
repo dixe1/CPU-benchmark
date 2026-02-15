@@ -10,7 +10,7 @@
 
 inline void printResult(const double duration)
 {
-    const auto config = ConfigLoader::load("../config/config.txt");
+    const auto config = ConfigLoader::load("config/config.txt");
     std::ofstream resultFile("Result.log");
 
     // Not pretty but works
