@@ -10,6 +10,7 @@ CPU benchmarking tool written in C++20 to measure single-core and multi-core per
 - Loading bar animation while benchmarking
 - Results printed to console and saved to `Result.log`
 - Configurable cycles and number using `config/config.txt`
+- Stress test
 
 ---
 
