@@ -56,7 +56,6 @@ private:
     static void checkFile(const std::fstream& file)
     {
         if (!file.is_open())
-            // throw std::runtime_error("Error opening file"); default
             throw std::runtime_error("Config not found, missing config/config.txt");
 
         if (!file.good())
@@ -67,10 +66,13 @@ private:
         if (line.empty())
             return;
 
-        if (line.at(line.length()-1) == ' ')
-            line.erase(line.length()-1, line.length());
+        while (line.at(0) == ' ' || line.at(line.length()-1) == ' ')
+        {
+            if (line.at(line.length()-1) == ' ')
+                line.erase(line.length()-1, line.length());
 
-        if (line.at(0) == ' ')
-            line.erase(0, 1);
+            if (line.at(0) == ' ')
+                line.erase(0, 1);
+        }
     }
 };

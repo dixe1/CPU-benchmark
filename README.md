@@ -53,6 +53,6 @@ cmake -G "Unix Makefiles" -B build
 cmake --build build
 ```
 ### 3 Move config folder to built
-Move folder "config" from "CPU-Benchmark" to "build"
+Move folder "config" from "CPU-Benchmark" to folder where is your binary
 
 
