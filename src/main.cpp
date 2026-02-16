@@ -28,26 +28,39 @@ int main()
 
         switch (userInput)
         {
-            case '1':
+            case '1':   // Multi core
                 threads.emplace_back(
                     &Benchmark::startBenchmark,
                     &benchmark,
                     std::thread::hardware_concurrency(),
-                    std::ref(isWorking)
+                    std::ref(isWorking),
+                    false
                 );
                 repeatMenu = false;
                 break;
 
-            case '2':
+            case '2':   // Single core
                 threads.emplace_back(
                     &Benchmark::startBenchmark,
                     &benchmark,
                     1,
-                    std::ref(isWorking)
+                    std::ref(isWorking),
+                    false
                 );
                 repeatMenu = false;
                 break;
-            case '3':
+
+            case '3':   // Stress test
+                threads.emplace_back(
+                    &Benchmark::startBenchmark,
+                    &benchmark,
+                    std::thread::hardware_concurrency(),
+                    std::ref(isWorking),
+                    true
+                );
+                repeatMenu = false;
+                break;
+            case '4':
                 return 0;
         }
 

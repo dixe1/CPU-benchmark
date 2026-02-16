@@ -16,27 +16,39 @@ class Benchmark
 {
 private:
     const std::unordered_map<std::string, std::string> config = ConfigLoader::load("config/config.txt");
-    double calculate(const size_t threads) const
+    double calculate(const size_t threads, const bool stressTest) const
     {
         const uint64_t cycles = std::floor(std::stoull(config.at("cycles")) / threads);
         const double num = std::stod(config.at("num"));
 
         double j{};
         double sum{};
-        for (uint64_t i{}; i < cycles; i++)
-        {
-            const volatile double r = std::sin(num + j + 1);
-            sum += r;
-            j += 0.001;
-        }
 
+        if (stressTest)
+        {
+            while (true)
+            {
+                const volatile double r = std::sin(num + j + 1);
+                sum += r;
+                j += 0.001;
+            }
+        }
+        else
+        {
+            for (uint64_t i{}; i < cycles; i++)
+            {
+                const volatile double r = std::sin(num + j + 1);
+                sum += r;
+                j += 0.001;
+            }
+        }
         return sum; // To stop compiler optimising code
     }
 
 public:
     double duration{};
 
-    void startBenchmark(size_t threadsToUse, std::atomic<bool>& isWorking)
+    void startBenchmark(size_t threadsToUse, std::atomic<bool>& isWorking, const bool stressTest)
     {
         isWorking = true;
         std::vector<std::thread> threads;
@@ -44,7 +56,7 @@ public:
 
         const auto start = std::chrono::high_resolution_clock::now();
         for (size_t i{}; i < threadsToUse; i++)
-            threads.emplace_back(&Benchmark::calculate, this, threadsToUse);
+            threads.emplace_back(&Benchmark::calculate, this, threadsToUse, stressTest);
 
         for (auto& thread : threads)
             thread.join();
