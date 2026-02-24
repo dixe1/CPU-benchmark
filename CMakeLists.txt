@@ -10,4 +10,11 @@ add_executable(Benchmark src/main.cpp
         includes/Benchmark.h
         includes/PrintAndSaveResult.h
         includes/LoadingBar.h
+        src/Benchmark.cpp
+        src/ClearTerminal.cpp
+        src/ConfigLoader.cpp
+        src/GetUserInput.cpp
+        src/LoadingBar.cpp
+        src/Menu.cpp
+        src/PrintAndSaveResult.cpp
 )
