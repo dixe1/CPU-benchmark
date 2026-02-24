@@ -8,7 +8,7 @@
 class Benchmark
 {
 private:
-    const std::unordered_map<std::string, std::string> config = ConfigLoader::load("../config/config.txt");
+    const std::unordered_map<std::string, std::string> config = ConfigLoader::load("config/config.txt");
     double calculate(size_t threads, bool stressTest) const;
 
 public:
