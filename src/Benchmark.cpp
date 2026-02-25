@@ -37,7 +37,7 @@ double Benchmark::calculate(const size_t threads, const bool stressTest) const
             j += 0.001;
         }
     }
-    return sum; // To stop compiler optimising code
+    return sum; // To stop compiler optimizing code
 }
 
 void Benchmark::startBenchmark(size_t threadsToUse, std::atomic<bool>& isWorking, const bool stressTest)

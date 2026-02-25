@@ -24,7 +24,6 @@ int main()
         printMenu();
         std::cout << ">> ";
         const auto userInput = getUserInput();
-        double duration{};
 
         switch (userInput)
         {
