@@ -1,21 +1,19 @@
 #include <iostream>
 #include <thread>
 #include <vector>
-#include <atomic>
 #include <chrono>
 
 #include "../includes/Menu.h"
 #include "../includes/GetUserInput.h"
 #include "../includes/ClearTerminal.h"
-#include "../includes/Benchmark.h"
 #include "../includes/PrintAndSaveResult.h"
 #include "../includes/LoadingBar.h"
+#include "../includes/Application.h"
 
 int main()
 {
-    std::vector<std::thread> threads;
-    std::atomic<bool> isWorking{true};
-    Benchmark benchmark;
+    Application app;
+    app.loadConfig("config/config.txt");
 
     bool repeatMenu = true;
     while (repeatMenu)
@@ -25,50 +23,30 @@ int main()
         std::cout << ">> ";
         const auto userInput = getUserInput();
 
+        std::vector<std::thread> thread;
+
         switch (userInput)
         {
             case '1':   // Multi core
-                threads.emplace_back(
-                    &Benchmark::startBenchmark,
-                    &benchmark,
-                    std::thread::hardware_concurrency(),
-                    std::ref(isWorking),
-                    false
-                );
                 repeatMenu = false;
+                thread.emplace_back(&Application::startMultiCore, &app);
                 break;
 
             case '2':   // Single core
-                threads.emplace_back(
-                    &Benchmark::startBenchmark,
-                    &benchmark,
-                    1,
-                    std::ref(isWorking),
-                    false
-                );
                 repeatMenu = false;
+                thread.emplace_back(&Application::startSingleCore, &app);
                 break;
 
             case '3':   // Stress test
-                threads.emplace_back(
-                    &Benchmark::startBenchmark,
-                    &benchmark,
-                    std::thread::hardware_concurrency(),
-                    std::ref(isWorking),
-                    true
-                );
                 repeatMenu = false;
+                thread.emplace_back(&Application::startStressTest, &app);
                 break;
             case '4':
                 return 0;
         }
 
-
-        startLoadingBar(isWorking);
-
-        for (auto& thread : threads)
-            thread.join();
-
-        printResult(benchmark.duration);
+        startLoadingBar(app.isWorking);
+        thread.at(0).join();
+        printResult(app.benchmarkDuration);
     }
 }

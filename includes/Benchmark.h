@@ -3,16 +3,12 @@
 //
 #pragma once
 
-#include "../includes/ConfigLoader.h"
 
 class Benchmark
 {
 private:
-    const std::unordered_map<std::string, std::string> config = ConfigLoader::load("config/config.txt");
-    double calculate(size_t threads, bool stressTest) const;
+    static double calculate(const size_t threads, const bool stressTest, const std::unordered_map<std::string, std::string>& config);
 
 public:
-    double duration{};
-
-    void startBenchmark(size_t threadsToUse, std::atomic<bool>& isWorking, bool stressTest);
+    static double startBenchmark(size_t threadsToUse, bool stressTest, const std::unordered_map<std::string, std::string>& config);
 };

@@ -11,7 +11,7 @@
 
 #include "../includes/Benchmark.h"
 
-double Benchmark::calculate(const size_t threads, const bool stressTest) const
+double Benchmark::calculate(const size_t threads, const bool stressTest, const std::unordered_map<std::string, std::string>& config)
 {
     const uint64_t cycles = std::floor(std::stoull(config.at("cycles")) / threads);
     const double num = std::stod(config.at("num"));
@@ -40,22 +40,20 @@ double Benchmark::calculate(const size_t threads, const bool stressTest) const
     return sum; // To stop compiler optimizing code
 }
 
-void Benchmark::startBenchmark(size_t threadsToUse, std::atomic<bool>& isWorking, const bool stressTest)
+double Benchmark::startBenchmark(size_t threadsToUse, bool stressTest,const std::unordered_map<std::string, std::string>& config)
 {
-    isWorking = true;
     std::vector<std::thread> threads;
     threads.reserve(threadsToUse);
 
     const auto start = std::chrono::high_resolution_clock::now();
     for (size_t i{}; i < threadsToUse; i++)
-        threads.emplace_back(&Benchmark::calculate, this, threadsToUse, stressTest);
+        threads.emplace_back(&Benchmark::calculate, threadsToUse, stressTest, std::ref(config));
 
     for (auto& thread : threads)
         thread.join();
 
     const auto end = std::chrono::high_resolution_clock::now();
 
-    const std::chrono::duration<double> duration_ = end - start;
-    duration = duration_.count();
-    isWorking = false;
+    const std::chrono::duration<double> duration = end - start;
+    return duration.count();
 }

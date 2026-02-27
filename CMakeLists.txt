@@ -17,4 +17,6 @@ add_executable(Benchmark src/main.cpp
         src/LoadingBar.cpp
         src/Menu.cpp
         src/PrintAndSaveResult.cpp
+        src/Application.cpp
+        includes/Application.h
 )
