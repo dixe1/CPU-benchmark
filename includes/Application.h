@@ -11,7 +11,7 @@ class Application
 {
 public:
     double benchmarkDuration{};
-    std::atomic<bool> isWorking = true;
+    std::atomic<bool> isBenchmarkRunning = true;
     std::unordered_map<std::string, std::string> config;
 
     void loadConfig(const std::string& fileName);

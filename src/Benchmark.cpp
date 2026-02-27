@@ -7,7 +7,6 @@
 #include <thread>
 #include <chrono>
 #include <cmath>
-#include <atomic>
 
 #include "../includes/Benchmark.h"
 

@@ -3,5 +3,6 @@
 //
 
 #pragma once
+#include "Application.h"
 
-void printResult(double duration);
+void printAndSaveResult(const Application& app);

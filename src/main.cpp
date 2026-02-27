@@ -48,8 +48,8 @@ int main()
                 continue;
         }
 
-        startLoadingBar(app.isWorking);
+        startLoadingBar(app.isBenchmarkRunning);
         thread.at(0).join();
-        printResult(app.benchmarkDuration);
+        printAndSaveResult(app);
     }
 }

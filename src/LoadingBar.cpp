@@ -14,7 +14,7 @@
 
 void startLoadingBar(const std::atomic<bool>& isWorking)
 {
-    const std::array<std::string, 6> loading {".","..","...", "....", ".....", "......"};
+    constexpr std::array<std::string_view, 6> loading {".","..","...", "....", ".....", "......"};
     int i{};
     while (isWorking)
     {

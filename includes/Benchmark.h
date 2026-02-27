@@ -3,11 +3,10 @@
 //
 #pragma once
 
-
 class Benchmark
 {
 private:
-    static double calculate(const size_t threads, const bool stressTest, const std::unordered_map<std::string, std::string>& config);
+    static double calculate(size_t threads, bool stressTest, const std::unordered_map<std::string, std::string>& config);
 
 public:
     static double startBenchmark(size_t threadsToUse, bool stressTest, const std::unordered_map<std::string, std::string>& config);

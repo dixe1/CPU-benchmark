@@ -14,25 +14,24 @@ void Application::loadConfig(const std::string &fileName)
 
 void Application::startMultiCore()
 {
-    isWorking = true;
-    const auto threadsToUse = std::thread::hardware_concurrency();
-    benchmarkDuration = Benchmark::startBenchmark(threadsToUse, false, config);
-    isWorking = false;
+    isBenchmarkRunning = true;
+    benchmarkDuration = Benchmark::startBenchmark(std::thread::hardware_concurrency(), false, config);
+    isBenchmarkRunning = false;
 }
 void Application::startSingleCore()
 {
-    isWorking = true;
+    isBenchmarkRunning = true;
     benchmarkDuration = Benchmark::startBenchmark(1, false, config);
-    isWorking = false;
+    isBenchmarkRunning = false;
 
 }
 
 void Application::startStressTest()
 {
-    isWorking = true;
+    isBenchmarkRunning = true;
     const auto threadsToUse = std::thread::hardware_concurrency();
     benchmarkDuration = Benchmark::startBenchmark(threadsToUse, true, config);
-    isWorking = false;
+    isBenchmarkRunning = false;
 }
 
 
