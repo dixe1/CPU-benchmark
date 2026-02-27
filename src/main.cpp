@@ -43,6 +43,9 @@ int main()
                 break;
             case '4':
                 return 0;
+            default:
+                clearTerminal();
+                continue;
         }
 
         startLoadingBar(app.isWorking);
