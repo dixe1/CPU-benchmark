@@ -11,15 +11,20 @@ void printAndSaveResult(const Application& app)
 {
     std::ofstream resultFile("Result.log");
 
-    // Not pretty but works
+    if (!resultFile.is_open())
+        throw std::runtime_error("resultFile can't be open");
 
-    resultFile << "------- DATA --------\n";
-    resultFile << "cycles: " << app.config.at("cycles") << "\n";
-    resultFile << "num: " << app.config.at("num") << "\n";
-    resultFile << "result: " << app.benchmarkPoints << " points\n";
+    if (resultFile.fail())
+        throw std::runtime_error("resultFile failed");
 
-    std::cout << "------- DATA --------\n";
-    std::cout << "cycles: " << app.config.at("cycles") << "\n";
-    std::cout << "num: " << app.config.at("num") << "\n";
-    std::cout << "result: " << app.benchmarkPoints << " points\n";
+    auto print = [&](std::ostream& out)
+    {
+        out << "------- DATA --------\n";
+        out << "cycles: " << app.config.at("cycles") << "\n";
+        out << "num: " << app.config.at("num") << "\n";
+        out << "result: " << app.benchmarkPoints << " points\n";
+    };
+
+    print(resultFile);
+    print(std::cout);
 }

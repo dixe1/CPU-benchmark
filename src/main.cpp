@@ -57,6 +57,13 @@ int main()
         if (startThread.joinable())
             startThread.join();
 
-        printAndSaveResult(app);
+        try
+        {
+            printAndSaveResult(app);
+        }
+        catch (std::exception& e)
+        {
+            std::cerr << e.what() << std::endl;
+        }
     }
 }
