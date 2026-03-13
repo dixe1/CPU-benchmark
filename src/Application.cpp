@@ -5,12 +5,25 @@
 #include <cmath>
 
 #include "../includes/Application.h"
+
+#include <iostream>
+
 #include "../includes/ConfigLoader.h"
 #include "../includes/Benchmark.h"
 
-void Application::loadConfig(const std::string &fileName)
+int Application::loadConfig(const std::string &fileName)
 {
-    config = ConfigLoader::load(fileName);
+    try
+    {
+        config = ConfigLoader::load(fileName);
+    }
+    catch (std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+        return -1;
+    }
+
+    return 0;
 }
 
 void Application::startMultiCore()

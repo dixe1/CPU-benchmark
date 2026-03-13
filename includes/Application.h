@@ -15,7 +15,7 @@ public:
     std::atomic<bool> isBenchmarkRunning = true;
     std::unordered_map<std::string, std::string> config;
 
-    void loadConfig(const std::string& fileName);
+    int loadConfig(const std::string& fileName);
 
 
     void startMultiCore();

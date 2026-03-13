@@ -19,7 +19,8 @@ int main()
     #endif
 
     Application app;
-    app.loadConfig("config/config.txt");
+    if(app.loadConfig("config/config.txt") != 0)
+        return 0;
 
     bool repeatMenu = true;
     while (repeatMenu)
