@@ -55,12 +55,11 @@ void ConfigLoader::deleteSpaces(std::string& line)
     if (line.empty())
         return;
 
-    while (line.at(0) == ' ' || line.at(line.length()-1) == ' ')
-    {
-        if (line.at(line.length()-1) == ' ')
-            line.erase(line.length()-1, line.length());
+    // Deleting from left site
+    while (!line.empty() && line.at(0) == ' ')
+        line.erase(0, 1);
 
-        if (line.at(0) == ' ')
-            line.erase(0, 1);
-    }
+    // Deleting from right site
+    while (!line.empty() && line.at(line.length()-1) == ' ')
+        line.erase(line.length()-1, line.length());
 }
