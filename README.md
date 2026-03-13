@@ -22,7 +22,7 @@ CPU benchmarking tool written in C++20 to measure single-core and multi-core per
 
 ## Configuration
 Edit config/config.txt to adjust benchmarking parameters:
-- cycles = 10000000000
+- cycles = 4500000000
 - num = 3.123141
 
 cycles: Total iterations to perform  
