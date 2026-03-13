@@ -17,6 +17,8 @@ void Application::startMultiCore()
     isBenchmarkRunning = true;
     benchmarkDuration = Benchmark::startBenchmark(std::thread::hardware_concurrency(), false, config);
     isBenchmarkRunning = false;
+
+    calculatePoints();
 }
 void Application::startSingleCore()
 {
@@ -24,6 +26,7 @@ void Application::startSingleCore()
     benchmarkDuration = Benchmark::startBenchmark(1, false, config);
     isBenchmarkRunning = false;
 
+    calculatePoints();
 }
 
 void Application::startStressTest()
@@ -32,6 +35,12 @@ void Application::startStressTest()
     const auto threadsToUse = std::thread::hardware_concurrency();
     benchmarkDuration = Benchmark::startBenchmark(threadsToUse, true, config);
     isBenchmarkRunning = false;
+
+    calculatePoints();
 }
 
 
+void Application::calculatePoints()
+{
+    benchmarkPoints = static_cast<int>((std::stoull(config.at("cycles")) / benchmarkDuration) * 1e-6);
+}

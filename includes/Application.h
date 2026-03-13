@@ -11,6 +11,7 @@ class Application
 {
 public:
     double benchmarkDuration{};
+    int benchmarkPoints{};
     std::atomic<bool> isBenchmarkRunning = true;
     std::unordered_map<std::string, std::string> config;
 
@@ -20,4 +21,6 @@ public:
     void startMultiCore();
     void startSingleCore();
     void startStressTest();
+
+    void calculatePoints();
 };

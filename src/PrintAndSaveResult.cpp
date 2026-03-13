@@ -16,10 +16,10 @@ void printAndSaveResult(const Application& app)
     resultFile << "------- DATA --------\n";
     resultFile << "cycles: " << app.config.at("cycles") << "\n";
     resultFile << "num: " << app.config.at("num") << "\n";
-    resultFile << "result [less - better]: " << app.benchmarkDuration << "s\n";
+    resultFile << "result: " << app.benchmarkPoints << " points\n";
 
     std::cout << "------- DATA --------\n";
     std::cout << "cycles: " << app.config.at("cycles") << "\n";
     std::cout << "num: " << app.config.at("num") << "\n";
-    std::cout << "result [less - better]: " << app.benchmarkDuration << "s\n";
+    std::cout << "result: " << app.benchmarkPoints << " points\n";
 }
