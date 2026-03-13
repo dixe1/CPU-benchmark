@@ -30,23 +30,23 @@ int main()
         std::cout << ">> ";
         const auto userInput = getUserInput();
 
-        std::vector<std::thread> threads;
+        std::thread startThread;
 
         switch (userInput)
         {
             case '1':   // Multi core
                 repeatMenu = false;
-                threads.emplace_back(&Application::startMultiCore, &app);
+                startThread = std::thread(&Application::startMultiCore, &app);
                 break;
 
             case '2':   // Single core
                 repeatMenu = false;
-                threads.emplace_back(&Application::startSingleCore, &app);
+                startThread = std::thread(&Application::startSingleCore, &app);
                 break;
 
             case '3':   // Stress test
                 repeatMenu = false;
-                threads.emplace_back(&Application::startStressTest, &app);
+                startThread = std::thread(&Application::startStressTest, &app);
                 break;
             case '4':
                 return 0;
@@ -56,7 +56,10 @@ int main()
         }
 
         startLoadingBar(app.isBenchmarkRunning);
-        threads.at(0).join();
+
+        if (startThread.joinable())
+            startThread.join();
+
         printAndSaveResult(app);
     }
 }
