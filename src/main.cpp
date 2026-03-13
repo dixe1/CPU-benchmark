@@ -1,6 +1,5 @@
 #include <iostream>
 #include <thread>
-#include <vector>
 #include <chrono>
 
 #include "../includes/Menu.h"
