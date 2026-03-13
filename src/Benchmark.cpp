@@ -7,10 +7,14 @@
 #include <thread>
 #include <chrono>
 #include <cmath>
+#include <atomic>
 
 #include "../includes/Benchmark.h"
 
-double Benchmark::calculate(const size_t threads, const bool stressTest, const std::unordered_map<std::string, std::string>& config)
+// outputNumbers is static that's why do this
+std::atomic<double> Benchmark::outputNumbers{};
+
+void Benchmark::calculate(const size_t threads, const bool stressTest, const std::unordered_map<std::string, std::string>& config)
 {
     const uint64_t cycles = std::floor(std::stoull(config.at("cycles")) / threads);
     const double num = std::stod(config.at("num"));
@@ -36,7 +40,7 @@ double Benchmark::calculate(const size_t threads, const bool stressTest, const s
             j += 0.001;
         }
     }
-    return sum; // To stop compiler optimizing code
+    outputNumbers += sum;
 }
 
 double Benchmark::startBenchmark(size_t threadsToUse, bool stressTest,const std::unordered_map<std::string, std::string>& config)
