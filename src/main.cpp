@@ -34,17 +34,14 @@ int main()
         switch (userInput)
         {
             case '1':   // Multi core
-                repeatMenu = false;
                 startThread = std::thread(&Application::startMultiCore, &app);
                 break;
 
             case '2':   // Single core
-                repeatMenu = false;
                 startThread = std::thread(&Application::startSingleCore, &app);
                 break;
 
             case '3':   // Stress test
-                repeatMenu = false;
                 startThread = std::thread(&Application::startStressTest, &app);
                 break;
             case '4':
@@ -53,6 +50,7 @@ int main()
                 clearTerminal();
                 continue;
         }
+        repeatMenu = false;
 
         startLoadingBar(app.isBenchmarkRunning);
 
