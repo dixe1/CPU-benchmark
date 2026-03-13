@@ -2,6 +2,7 @@
 // Created by bartek on 2/27/26.
 //
 #include <thread>
+#include <cmath>
 
 #include "../includes/Application.h"
 #include "../includes/ConfigLoader.h"
@@ -42,5 +43,7 @@ void Application::startStressTest()
 
 void Application::calculatePoints()
 {
-    benchmarkPoints = static_cast<int>((std::stoull(config.at("cycles")) / benchmarkDuration) * 1e-6);
+    const uint64_t cycles = std::stoull(config.at("cycles"));
+    const double points = static_cast<double>(cycles) / benchmarkDuration * 1e-6;
+    benchmarkPoints = static_cast<int>(std::round(points));
 }
