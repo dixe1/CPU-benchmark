@@ -17,7 +17,12 @@ int main()
         enableANSI();
     #endif
 
+    // Set app
     Application app;
+
+    // Set userInput
+    GetUserInput userInput;
+
     if(app.loadConfig("config/config.txt") != 0)
         return 0;
 
@@ -26,12 +31,21 @@ int main()
     {
         clearTerminal();
         printMenu();
-        std::cout << ">> ";
-        const auto userInput = getUserInput();
 
+        // Print errors to the user in gray color
+        for (auto& i : userInput.errors)
+            std::cout << "\033[90m" << i << "\033[0m\n";
+
+        // If there is no error print new line to make space
+        if (userInput.errors.empty())
+            std::cout << '\n';
+
+        std::cout << ">> "; // This is that think before cursor
+
+        // Thread for starting benchmark
         std::thread startThread;
 
-        switch (userInput)
+        switch (userInput.getUserInput())
         {
             case '1':   // Multi core
                 startThread = std::thread(&Application::startMultiCore, &app);

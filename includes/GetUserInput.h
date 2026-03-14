@@ -3,5 +3,12 @@
 //
 
 #pragma once
+#include <vector>
 
-char getUserInput();
+class GetUserInput
+{
+    public:
+    std::vector <std::string> errors;
+
+    char getUserInput();
+};

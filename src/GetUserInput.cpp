@@ -7,13 +7,19 @@
 
 #include "../includes/GetUserInput.h"
 
-char getUserInput()
+char GetUserInput::getUserInput()
 {
+    // Clear errors
+    errors.clear();
+
     std::string userInput;
     std::cin >> userInput;
 
-    if (userInput.empty())
-        userInput = "0";
+    if (userInput.length() > 1)
+    {
+        errors.emplace_back(" - Enter one character - ");
+        return '0';
+    }
 
     return userInput[0];
 }
