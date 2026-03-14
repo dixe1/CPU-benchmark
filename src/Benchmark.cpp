@@ -22,6 +22,7 @@ void Benchmark::calculate(const size_t threads, const bool stressTest, const std
     double j{};
     double sum{};
 
+    // Stress test
     if (stressTest)
     {
         while (true)
@@ -31,6 +32,8 @@ void Benchmark::calculate(const size_t threads, const bool stressTest, const std
             j += 0.001;
         }
     }
+
+    // Normal benchmark
     else
     {
         for (uint64_t i{}; i < cycles; i++)
@@ -53,7 +56,8 @@ double Benchmark::startBenchmark(size_t threadsToUse, bool stressTest,const std:
         threads.emplace_back(&Benchmark::calculate, threadsToUse, stressTest, std::ref(config));
 
     for (auto& thread : threads)
-        thread.join();
+        if (thread.joinable())
+            thread.join();
 
     const auto end = std::chrono::high_resolution_clock::now();
 

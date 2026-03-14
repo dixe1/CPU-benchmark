@@ -46,8 +46,7 @@ void Application::startSingleCore()
 void Application::startStressTest()
 {
     isBenchmarkRunning = true;
-    const auto threadsToUse = std::thread::hardware_concurrency();
-    benchmarkDuration = Benchmark::startBenchmark(threadsToUse, true, config);
+    benchmarkDuration = Benchmark::startBenchmark(std::thread::hardware_concurrency(), true, config);
     isBenchmarkRunning = false;
 
     calculatePoints();
