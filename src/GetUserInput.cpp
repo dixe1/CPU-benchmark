@@ -23,3 +23,8 @@ char GetUserInput::getUserInput()
 
     return userInput[0];
 }
+
+const std::vector<std::string>& GetUserInput::getErrors() const
+{
+    return errors;
+}

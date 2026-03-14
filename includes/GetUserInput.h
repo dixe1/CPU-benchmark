@@ -7,8 +7,10 @@
 
 class GetUserInput
 {
-    public:
-    std::vector <std::string> errors;
+    private:
+    std::vector<std::string> errors;
 
+    public:
     char getUserInput();
+    const std::vector<std::string>& getErrors() const;
 };
