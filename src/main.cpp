@@ -60,7 +60,6 @@ int main()
             case '4':
                 return 0;
             default:
-                clearTerminal();
                 continue;
         }
         repeatMenu = false;
