@@ -22,6 +22,7 @@ void printAndSaveResult(const Application& app)
         out << "------- DATA --------\n";
         out << "cycles: " << app.getConfig().at("cycles") << "\n";
         out << "num: " << app.getConfig().at("num") << "\n";
+        out << "duration: " << app.getBenchmarkDuration() << " seconds \n";
         out << "result: " << app.getBenchmarkPoints() << " points\n";
     };
 
