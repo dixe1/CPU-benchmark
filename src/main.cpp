@@ -32,12 +32,11 @@ int main()
         clearTerminal();
         printMenu();
 
-        // Print errors to the user in gray color
-        for (auto& i : userInput.getErrors())
-            std::cout << "\033[90m" << i << "\033[0m\n";
-
-        // If there is no error print new line to make space
-        if (userInput.getErrors().empty())
+        // Print errors to the user, if there is no errors print new line
+        if (!userInput.getErrors().empty())
+            for (auto& i : userInput.getErrors())
+                std::cout << "\033[90m" << i << "\033[0m\n";    // gray color
+        else
             std::cout << '\n';
 
         std::cout << ">> "; // This is that think before cursor
