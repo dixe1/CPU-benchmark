@@ -13,4 +13,6 @@ add_executable(Benchmark src/main.cpp
         src/PrintAndSaveResult.cpp
         src/Application.cpp
         src/EnableANSI.cpp
+        src/GetCPUName.cpp
+        includes/GetCPUName.h
 )

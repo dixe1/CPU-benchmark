@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <fstream>
 #include "../includes/PrintAndSaveResult.h"
+#include "../includes/GetCPUName.h"
 
 void printAndSaveResult(const Application& app)
 {
@@ -19,11 +20,13 @@ void printAndSaveResult(const Application& app)
 
     auto print = [&](std::ostream& out)
     {
-        out << "------- DATA --------\n";
-        out << "cycles: " << app.getConfig().at("cycles") << "\n";
-        out << "num: " << app.getConfig().at("num") << "\n";
-        out << "duration: " << app.getBenchmarkDuration() << " seconds \n";
-        out << "result: " << app.getBenchmarkPoints() << " points\n";
+        out << "BENCHMARK REPORT\n";
+        out << "────────────────────────────────\n\n";
+        out << "CPU      : " << getCPUName() << "\n\n";
+        out << "cycles   : " << app.getConfig().at("cycles") << "\n";
+        out << "num      : " << app.getConfig().at("num") << "\n\n";
+        out << "duration : " << app.getBenchmarkDuration() << " seconds\n";
+        out << "score    : " << app.getBenchmarkPoints() << " points\n";
     };
 
     print(resultFile);
