@@ -3,6 +3,6 @@
 //
 
 #pragma once
-#include <atomic>
+#include "Application.h"
 
-void startLoadingBar(const std::atomic<bool>& isWorking);
+void startLoadingBar(const Application& app);

@@ -74,3 +74,8 @@ const std::unordered_map<std::string, std::string>& Application::getConfig() con
 {
     return config;
 }
+
+const std::atomic<bool>& Application::getIsBenchmarkRunning() const
+{
+    return isBenchmarkRunning;
+}

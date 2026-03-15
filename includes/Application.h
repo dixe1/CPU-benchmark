@@ -13,8 +13,8 @@ private:
     double benchmarkDuration{};
     int benchmarkPoints{};
     std::unordered_map<std::string, std::string> config;
-public:
     std::atomic<bool> isBenchmarkRunning = true;
+public:
 
     int loadConfig(const std::string& fileName);
 
@@ -28,4 +28,5 @@ public:
     double getBenchmarkDuration() const;
     int getBenchmarkPoints() const;
     const std::unordered_map<std::string, std::string>& getConfig() const;
+    const std::atomic<bool>& getIsBenchmarkRunning() const;
 };

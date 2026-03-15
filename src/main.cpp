@@ -64,7 +64,7 @@ int main()
         }
         repeatMenu = false;
 
-        startLoadingBar(app.isBenchmarkRunning);
+        startLoadingBar(app);
 
         if (startThread.joinable())
             startThread.join();

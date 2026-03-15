@@ -9,14 +9,15 @@
 #include <thread>
 #include <chrono>
 
+#include "../includes/Application.h"
 #include "../includes/LoadingBar.h"
 #include "../includes/ClearTerminal.h"
 
-void startLoadingBar(const std::atomic<bool>& isWorking)
+void startLoadingBar(const Application& app)
 {
     constexpr std::array<std::string_view, 6> loading {".","..","...", "....", ".....", "......"};
     int i{};
-    while (isWorking)
+    while (app.getIsBenchmarkRunning())
     {
         if (i > 5) i = 0;
         std::cout << loading.at(i) << std::endl;
