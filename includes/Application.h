@@ -14,6 +14,8 @@ private:
     int benchmarkPoints{};
     std::unordered_map<std::string, std::string> config;
     std::atomic<bool> isBenchmarkRunning = true;
+
+    void calculatePoints();
 public:
 
     int loadConfig(const std::string& fileName);
@@ -22,8 +24,6 @@ public:
     void startMultiCore();
     void startSingleCore();
     void startStressTest();
-
-    void calculatePoints();
 
     double getBenchmarkDuration() const;
     int getBenchmarkPoints() const;
