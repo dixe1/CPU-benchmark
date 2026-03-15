@@ -28,6 +28,23 @@ Edit config/config.txt to adjust benchmarking parameters:
 cycles: Total iterations to perform  
 num: Base number used in computation
 
+## Benchmark Results
+
+> All results measured with default config: `cycles = 7000000000`, `num = 3.123141`  
+> Higher score = better performance
+
+| CPU | Cores / Threads | Multi-Core | Single-Core |
+|-----|----------------|-----------|------------|
+| Intel Core i5-12400F | 6 / 12 | 973 | 159 |
+| | | | |
+| | | | |
+
+---
+
+> Want to add your result? Open an issue or pull request with your CPU model and score!
+
+---
+
 ## Build
 
 ### 1. Clone the repository
