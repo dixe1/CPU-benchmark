@@ -9,11 +9,12 @@
 
 class Application
 {
-public:
+private:
     double benchmarkDuration{};
     int benchmarkPoints{};
-    std::atomic<bool> isBenchmarkRunning = true;
     std::unordered_map<std::string, std::string> config;
+public:
+    std::atomic<bool> isBenchmarkRunning = true;
 
     int loadConfig(const std::string& fileName);
 
@@ -23,4 +24,8 @@ public:
     void startStressTest();
 
     void calculatePoints();
+
+    double getBenchmarkDuration() const;
+    int getBenchmarkPoints() const;
+    const std::unordered_map<std::string, std::string>& getConfig() const;
 };

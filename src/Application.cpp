@@ -59,3 +59,18 @@ void Application::calculatePoints()
     const double points = static_cast<double>(cycles) / benchmarkDuration * 1e-6;
     benchmarkPoints = static_cast<int>(std::round(points));
 }
+
+double Application::getBenchmarkDuration() const
+{
+    return benchmarkDuration;
+}
+
+int Application::getBenchmarkPoints() const
+{
+    return benchmarkPoints;
+}
+
+const std::unordered_map<std::string, std::string>& Application::getConfig() const
+{
+    return config;
+}

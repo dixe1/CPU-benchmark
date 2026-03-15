@@ -20,9 +20,9 @@ void printAndSaveResult(const Application& app)
     auto print = [&](std::ostream& out)
     {
         out << "------- DATA --------\n";
-        out << "cycles: " << app.config.at("cycles") << "\n";
-        out << "num: " << app.config.at("num") << "\n";
-        out << "result: " << app.benchmarkPoints << " points\n";
+        out << "cycles: " << app.getConfig().at("cycles") << "\n";
+        out << "num: " << app.getConfig().at("num") << "\n";
+        out << "result: " << app.getBenchmarkPoints() << " points\n";
     };
 
     print(resultFile);
