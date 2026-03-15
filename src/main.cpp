@@ -78,4 +78,8 @@ int main()
             std::cerr << e.what() << std::endl;
         }
     }
+
+    // Dont close window
+    std::cin.ignore();
+    std::cin.get();
 }
