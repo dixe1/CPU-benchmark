@@ -17,7 +17,7 @@ CPU benchmarking tool written in C++20 to measure single-core and multi-core per
 ## Requirements
 
 - C++20 compatible compiler
-- CMake 4.1 or higher
+- CMake 3.28.3 or higher
 - Git (optional, for cloning)
 
 ## Configuration
