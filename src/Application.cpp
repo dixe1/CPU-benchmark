@@ -4,12 +4,12 @@
 #include <thread>
 #include <cmath>
 
-#include "../includes/Application.h"
+#include "Application.h"
 
 #include <iostream>
 
-#include "../includes/ConfigLoader.h"
-#include "../includes/Benchmark.h"
+#include "ConfigLoader.h"
+#include "Benchmark.h"
 
 int Application::loadConfig(const std::string &fileName)
 {

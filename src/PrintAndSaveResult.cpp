@@ -5,8 +5,8 @@
 #include <iostream>
 #include <unordered_map>
 #include <fstream>
-#include "../includes/PrintAndSaveResult.h"
-#include "../includes/GetCPUName.h"
+#include "PrintAndSaveResult.h"
+#include "GetCPUName.h"
 
 void printAndSaveResult(const Application& app)
 {

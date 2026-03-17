@@ -3,7 +3,10 @@ project(Benchmark)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Benchmark src/main.cpp
+include_directories(includes)
+
+add_executable(Benchmark
+        src/main.cpp
         src/Benchmark.cpp
         src/ClearTerminal.cpp
         src/ConfigLoader.cpp
@@ -14,5 +17,4 @@ add_executable(Benchmark src/main.cpp
         src/Application.cpp
         src/EnableANSI.cpp
         src/GetCPUName.cpp
-        includes/GetCPUName.h
 )

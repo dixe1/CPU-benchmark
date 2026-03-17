@@ -9,9 +9,9 @@
 #include <thread>
 #include <chrono>
 
-#include "../includes/Application.h"
-#include "../includes/LoadingBar.h"
-#include "../includes/ClearTerminal.h"
+#include "Application.h"
+#include "LoadingBar.h"
+#include "ClearTerminal.h"
 
 void startLoadingBar(const Application& app)
 {

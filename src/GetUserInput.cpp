@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-#include "../includes/GetUserInput.h"
+#include "GetUserInput.h"
 
 char GetUserInput::getUserInput()
 {

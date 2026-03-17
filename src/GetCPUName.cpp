@@ -2,7 +2,7 @@
 // Created by bartek on 3/15/26.
 //
 
-#include "../includes/GetCPUName.h"
+#include "GetCPUName.h"
 
 #include <iostream>
 #include <cstring>

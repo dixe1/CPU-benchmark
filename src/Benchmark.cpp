@@ -9,7 +9,7 @@
 #include <cmath>
 #include <atomic>
 
-#include "../includes/Benchmark.h"
+#include "Benchmark.h"
 
 // outputNumbers is static that's why do this
 std::atomic<double> Benchmark::outputNumbers{};

@@ -2,7 +2,7 @@
 // Created by bartek on 2/24/26.
 //
 
-#include "../includes/ConfigLoader.h"
+#include "ConfigLoader.h"
 
 std::unordered_map<std::string, std::string>
 ConfigLoader::load(const std::string& pathAndFileName)

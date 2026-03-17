@@ -2,13 +2,13 @@
 #include <thread>
 #include <chrono>
 
-#include "../includes/Menu.h"
-#include "../includes/GetUserInput.h"
-#include "../includes/ClearTerminal.h"
-#include "../includes/PrintAndSaveResult.h"
-#include "../includes/LoadingBar.h"
-#include "../includes/Application.h"
-#include "../includes/EnableANSI.h"
+#include "Menu.h"
+#include "GetUserInput.h"
+#include "ClearTerminal.h"
+#include "PrintAndSaveResult.h"
+#include "LoadingBar.h"
+#include "Application.h"
+#include "EnableANSI.h"
 
 int main()
 {

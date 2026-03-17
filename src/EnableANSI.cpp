@@ -2,7 +2,7 @@
 // Created by bartek on 3/13/26.
 //
 
-#include "../includes/EnableANSI.h"
+#include "EnableANSI.h"
 
 // Enable ANSI only if is on Windows
 // linux default works
