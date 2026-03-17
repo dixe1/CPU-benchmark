@@ -11,7 +11,7 @@ private:
 
     // Add results from all threads
     // To prevent compiler optimizations
-    static std::atomic<double> outputNumbers;
+    static std::atomic<int> outputNumbers;
 
 public:
     static double startBenchmark(size_t threadsToUse, bool stressTest, const std::unordered_map<std::string, std::string>& config);

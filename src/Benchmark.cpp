@@ -12,7 +12,7 @@
 #include "Benchmark.h"
 
 // outputNumbers is static that's why do this
-std::atomic<double> Benchmark::outputNumbers{};
+std::atomic<int> Benchmark::outputNumbers{};
 
 void Benchmark::calculate(const size_t threads, const bool stressTest, const std::unordered_map<std::string, std::string>& config)
 {
@@ -43,7 +43,7 @@ void Benchmark::calculate(const size_t threads, const bool stressTest, const std
             j += 0.001;
         }
     }
-    outputNumbers += sum;
+    outputNumbers += static_cast<int>(sum);
 }
 
 double Benchmark::startBenchmark(size_t threadsToUse, bool stressTest,const std::unordered_map<std::string, std::string>& config)
