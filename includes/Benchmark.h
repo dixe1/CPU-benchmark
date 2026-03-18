@@ -3,6 +3,7 @@
 //
 #pragma once
 #include <atomic>
+#include <unordered_map>
 
 class Benchmark
 {
