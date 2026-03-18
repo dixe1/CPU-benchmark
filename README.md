@@ -64,7 +64,7 @@ cmake -G "Visual Studio 16 2019" -A x64 . -B build
 cmake -G "Unix Makefiles" -B build
 cmake --build build
 ```
-### 3 Move config folder to built
+### 3. Move config folder to built
 Move folder "config" from "CPU-Benchmark" to folder where is your binary
 
 
