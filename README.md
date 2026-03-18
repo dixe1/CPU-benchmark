@@ -29,11 +29,9 @@ num: Base number used in computation
 | Intel Core i5-12400F | 6 / 12 | 973 | 159 |
 | | | | |
 
----
 
 > Want to add your result? Open an issue or pull request with your CPU model and score!
 
----
 
 ## Requirements
 
