@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <string>
 
 #include "Menu.h"
 #include "GetUserInput.h"
@@ -32,12 +33,13 @@ int main()
         clearTerminal();
         printMenu();
 
+        const std::string& errors = userInput.getErrors();
+
         // Print errors to the user, if there is no errors print new line
-        if (!userInput.getErrors().empty())
-            for (auto& i : userInput.getErrors())
-                std::cout << "\033[90m" << i << "\033[0m\n";    // gray color
-        else
+        if (errors.empty())
             std::cout << '\n';
+        else
+            std::cout << "\033[90m" << errors << "\033[0m\n";    // gray color
 
         std::cout << ">> "; // This is that think before cursor
 

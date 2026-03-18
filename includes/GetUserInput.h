@@ -3,14 +3,15 @@
 //
 
 #pragma once
-#include <vector>
+#include <string>
 
 class GetUserInput
 {
     private:
-    std::vector<std::string> errors;
+    // std::vector<std::string> errors;
+    std::string errors;
 
     public:
     char getUserInput();
-    const std::vector<std::string>& getErrors() const;
+    [[nodiscard]] const std::string& getErrors() const;
 };

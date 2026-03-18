@@ -17,14 +17,14 @@ char GetUserInput::getUserInput()
 
     if (userInput.length() > 1)
     {
-        errors.emplace_back(" - Enter one character - ");
+        errors = " - Enter one character - ";
         return '0';
     }
 
     return userInput[0];
 }
 
-const std::vector<std::string>& GetUserInput::getErrors() const
+const std::string& GetUserInput::getErrors() const
 {
     return errors;
 }
