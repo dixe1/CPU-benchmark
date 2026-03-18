@@ -28,5 +28,5 @@ public:
     double getBenchmarkDuration() const;
     int getBenchmarkPoints() const;
     const std::unordered_map<std::string, std::string>& getConfig() const;
-    const std::atomic<bool>& getIsBenchmarkRunning() const;
+    bool getIsBenchmarkRunning() const;
 };
