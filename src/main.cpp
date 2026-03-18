@@ -33,13 +33,12 @@ int main()
         clearTerminal();
         printMenu();
 
-        const std::string& errors = userInput.getErrors();
 
         // Print errors to the user, if there is no errors print new line
-        if (errors.empty())
+        if (userInput.getError().empty())
             std::cout << '\n';
         else
-            std::cout << "\033[90m" << errors << "\033[0m\n";    // gray color
+            std::cout << "\033[90m" << userInput.getError() << "\033[0m\n";    // gray color
 
         std::cout << ">> "; // This is that think before cursor
 
@@ -62,6 +61,8 @@ int main()
             case '4':
                 return 0;
             default:
+                if (userInput.getError().empty())
+                    userInput.setError(" - Invalid option - ");
                 continue;
         }
         repeatMenu = false;

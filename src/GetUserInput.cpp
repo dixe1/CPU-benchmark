@@ -10,21 +10,26 @@
 char GetUserInput::getUserInput()
 {
     // Clear errors
-    errors.clear();
+    error.clear();
 
     std::string userInput;
     std::cin >> userInput;
 
     if (userInput.length() > 1)
     {
-        errors = " - Enter one character - ";
+        error = " - Enter one character - ";
         return '0';
     }
 
     return userInput[0];
 }
 
-const std::string& GetUserInput::getErrors() const
+const std::string& GetUserInput::getError() const
 {
-    return errors;
+    return error;
+}
+
+void GetUserInput::setError(const std::string &error_)
+{
+    error = error_;
 }
