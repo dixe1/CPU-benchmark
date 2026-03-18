@@ -20,6 +20,11 @@ int Application::loadConfig(const std::string &fileName)
     catch (std::exception &e)
     {
         std::cerr << e.what() << std::endl;
+
+        // Prevent from closing window
+        std::cin.ignore();
+        std::cin.get();
+
         return -1;
     }
 
