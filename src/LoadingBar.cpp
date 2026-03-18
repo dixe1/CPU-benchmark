@@ -20,9 +20,8 @@ void startLoadingBar(const Application& app)
     while (app.getIsBenchmarkRunning())
     {
         if (i > 5) i = 0;
-        std::cout << loading.at(i) << std::endl;
+        std::cout << loading.at(i++) << '\n';
         std::this_thread::sleep_for(std::chrono::milliseconds(300));
         clearTerminal();
-        i++;
     }
 }
