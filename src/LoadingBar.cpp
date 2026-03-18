@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include <atomic>
 #include <array>
 #include <string>
 #include <thread>
