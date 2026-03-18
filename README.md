@@ -14,12 +14,6 @@ CPU benchmarking tool written in C++20 to measure single-core and multi-core per
 
 ---
 
-## Requirements
-
-- C++20 compatible compiler
-- CMake 3.28.3 or higher
-- Git (optional, for cloning)
-
 ## Configuration
 Edit config/config.txt to adjust benchmarking parameters:
 - cycles = 7000000000
@@ -43,6 +37,12 @@ num: Base number used in computation
 > Want to add your result? Open an issue or pull request with your CPU model and score!
 
 ---
+
+## Requirements
+
+- C++20 compatible compiler
+- CMake 3.28.3 or higher
+- Git (optional, for cloning)
 
 ## Build
 
