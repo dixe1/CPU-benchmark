@@ -8,7 +8,6 @@
 class GetUserInput
 {
     private:
-    // std::vector<std::string> errors;
     std::string errors;
 
     public:
