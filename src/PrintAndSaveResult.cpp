@@ -10,14 +10,6 @@
 
 void printAndSaveResult(const Application& app)
 {
-    std::ofstream resultFile("Result.log");
-
-    if (!resultFile.is_open())
-        throw std::runtime_error("resultFile can't be open");
-
-    if (resultFile.fail())
-        throw std::runtime_error("resultFile failed");
-
     auto print = [&](std::ostream& out)
     {
         out << "BENCHMARK REPORT\n";
@@ -29,6 +21,16 @@ void printAndSaveResult(const Application& app)
         out << "score    : " << app.getBenchmarkPoints() << " points\n";
     };
 
-    print(resultFile);
+    // Print to console
     print(std::cout);
+
+    // Save to file
+    std::ofstream resultFile("Result.log");
+    if (!resultFile.is_open())
+        throw std::runtime_error("resultFile can't be open");
+
+    if (resultFile.fail())
+        throw std::runtime_error("resultFile failed");
+
+    print(resultFile);
 }
