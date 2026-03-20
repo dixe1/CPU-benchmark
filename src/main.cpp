@@ -47,18 +47,23 @@ int main()
 
         switch (userInput.getUserInput())
         {
-            case '1':   // Multi core
-                startThread = std::thread(&Application::startMultiCore, &app);
+            case '1':
+                startThread = std::thread(&Application::benchmarkMultiCore, &app);
                 break;
 
-            case '2':   // Single core
-                startThread = std::thread(&Application::startSingleCore, &app);
+            case '2':
+                startThread = std::thread(&Application::benchmarkSingleCore, &app);
                 break;
 
-            case '3':   // Stress test
-                startThread = std::thread(&Application::startStressTest, &app);
+            case '3':
+                startThread = std::thread(&Application::stressTestMultiCore, &app);
                 break;
+
             case '4':
+                startThread = std::thread(&Application::stressTestSingleCore, &app);
+                break;
+
+            case '5':
                 return 0;
             default:
                 if (userInput.getError().empty())

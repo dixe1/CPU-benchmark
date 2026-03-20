@@ -31,7 +31,7 @@ int Application::loadConfig(const std::string &fileName)
     return 0;
 }
 
-void Application::startMultiCore()
+void Application::benchmarkMultiCore()
 {
     isBenchmarkRunning = true;
     benchmarkDuration = Benchmark::startBenchmark(std::thread::hardware_concurrency(), false, config);
@@ -39,7 +39,7 @@ void Application::startMultiCore()
 
     calculatePoints();
 }
-void Application::startSingleCore()
+void Application::benchmarkSingleCore()
 {
     isBenchmarkRunning = true;
     benchmarkDuration = Benchmark::startBenchmark(1, false, config);
@@ -48,15 +48,18 @@ void Application::startSingleCore()
     calculatePoints();
 }
 
-void Application::startStressTest()
+void Application::stressTestMultiCore()
 {
     isBenchmarkRunning = true;
     benchmarkDuration = Benchmark::startBenchmark(std::thread::hardware_concurrency(), true, config);
     isBenchmarkRunning = false;
-
-    calculatePoints();
 }
-
+void Application::stressTestSingleCore()
+{
+    isBenchmarkRunning = true;
+    benchmarkDuration = Benchmark::startBenchmark(1, true, config);
+    isBenchmarkRunning = false;
+}
 
 void Application::calculatePoints()
 {

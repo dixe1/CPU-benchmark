@@ -21,9 +21,10 @@ public:
     int loadConfig(const std::string& fileName);
 
 
-    void startMultiCore();
-    void startSingleCore();
-    void startStressTest();
+    void benchmarkMultiCore();
+    void benchmarkSingleCore();
+    void stressTestMultiCore();
+    void stressTestSingleCore();
 
     double getBenchmarkDuration() const;
     int getBenchmarkPoints() const;
