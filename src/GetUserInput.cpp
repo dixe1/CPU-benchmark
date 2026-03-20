@@ -13,7 +13,7 @@ char GetUserInput::getUserInput()
     error.clear();
 
     std::string userInput;
-    std::cin >> userInput;
+    std::getline(std::cin, userInput);
 
     if (userInput.length() > 1)
     {
