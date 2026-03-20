@@ -10,6 +10,8 @@ CPU benchmarking tool written in C++20 to measure single-core and multi-core per
 - Configurable cycles and number using `config/config.txt`
 - Stress test
 
+![menu](images/menu.png)
+![menu](images/result.png)
 
 ## Configuration
 Edit config/config.txt to adjust benchmarking parameters:
