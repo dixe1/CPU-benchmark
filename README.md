@@ -35,7 +35,7 @@ num: Base number used in computation
 
 ## Requirements
 
-- C++20 compatible compiler
+- C++23 compatible compiler
 - CMake 3.28.3 or higher
 - Git (optional, for cloning)
 
