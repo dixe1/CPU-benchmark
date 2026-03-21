@@ -6,96 +6,88 @@
 #include <unordered_map>
 #include <fstream>
 #include <format>
+#include <vector>
 #include "PrintAndSaveResult.h"
 #include "GetCPUName.h"
 
 namespace
 {
-    // Colors
-    std::string GREEN   = "\033[32m";
-    std::string CYAN    = "\033[36m";
-    std::string YELLOW  = "\033[33m";
+    struct Colors
+    {
+        // Colors
+        const std::string GREEN   = "\033[32m";
+        const std::string CYAN    = "\033[36m";
+        const std::string YELLOW  = "\033[33m";
 
-    // Other
-    std::string RESET   = "\033[0m";
-    std::string DIM     = "\033[2m";
-    std::string BOLD    = "\033[1m";
+        // Other
+        const std::string RESET   = "\033[0m";
+        const std::string DIM     = "\033[2m";
+        const std::string BOLD    = "\033[1m";
 
-    void colorsOFF()
-    {
-        GREEN   .clear();
-        CYAN    .clear();
-        YELLOW  .clear();
-        RESET   .clear();
-        DIM     .clear();
-        BOLD    .clear();
-    }
-    void colorsON()
-    {
-        GREEN   = "\033[32m";
-        CYAN    = "\033[36m";
-        YELLOW  = "\033[33m";
-        RESET   = "\033[0m";
-        DIM     = "\033[2m";
-        BOLD    = "\033[1m";
-    }
-
-    std::string header()
-    {
-        return std::format("{}{}BENCHMARK REPORT{}\n",BOLD, GREEN, RESET);
-    }
-    std::string separator()
-    {
-        return std::format("{}──────────────────────────────────────────{}\n", DIM, RESET);
-    }
-    std::string CPU(const std::string& CPUName)
-    {
-        return std::format("{}{}CPU{}: {}\n", BOLD, YELLOW, RESET, CPUName);
-    }
-    std::string cycles(const std::string& cycles)
-    {
-        return std::format("{}{}cycles{}: {}\n", BOLD, YELLOW, RESET, cycles);
-    }
-    std::string num(const std::string& num)
-    {
-        return std::format("{}{}num{}: {}\n\n", BOLD, YELLOW, RESET, num);
-    }
-    std::string duration(double duration)
-    {
-        return std::format("{}{}duration{}: {} seconds\n", BOLD, YELLOW, RESET, duration);
-    }
-    std::string score(int score)
-    {
-        return std::format("{}{}score{}: {} points\n", BOLD, YELLOW, RESET, score);
-    }
+        static Colors ON()
+        {
+            return {};
+        }
+        static Colors OFF()
+        {
+            return {"","","","","",""};
+        }
+    };
 }
 
 
 void printAndSaveResult(const Application& app)
 {
-    auto print = [&](std::ostream& out)
+    auto print = [&](std::ostream& out,const Colors& c)
     {
+        auto header = [&]()
+        {
+            return std::format("{}{}BENCHMARK REPORT{}\n",c.BOLD, c.GREEN, c.RESET);
+        };
+        auto separator = [&]()
+        {
+            return std::format("{}──────────────────────────────────────────{}\n", c.DIM, c.RESET);
+        };
+        auto CPU = [&]()
+        {
+            return std::format("{}{}CPU{}: {}\n", c.BOLD, c.YELLOW, c.RESET, getCPUName());
+        };
+        auto cycles = [&]()
+        {
+            return std::format("{}{}cycles{}: {}\n", c.BOLD, c.YELLOW, c.RESET, app.getConfig().at("cycles"));
+        };
+        auto num = [&]()
+        {
+            return std::format("{}{}num{}: {}\n\n", c.BOLD, c.YELLOW, c.RESET, app.getConfig().at("num"));
+        };
+        auto duration = [&]()
+        {
+            return std::format("{}{}duration{}: {} seconds\n", c.BOLD, c.YELLOW, c.RESET, app.getBenchmarkDuration());
+        };
+        auto score = [&]()
+        {
+            return std::format("{}{}score{}: {} points\n", c.BOLD, c.YELLOW, c.RESET, app.getBenchmarkPoints());
+        };
+
         out << header();
         out << separator();
-        out << CPU(getCPUName());
-        out << cycles(app.getConfig().at("cycles"));
-        out << num(app.getConfig().at("num"));
-        out << duration(app.getBenchmarkDuration());
-        out << score(app.getBenchmarkPoints());
+        out << CPU();
+        out << cycles();
+        out << num();
+        out << duration();
+        out << score();
     };
 
     // Print to console
-    print(std::cout);
+    print(std::cout, Colors::ON());
 
     // Save to file
     std::ofstream resultFile("Result.log");
     if (!resultFile.is_open())
         throw std::runtime_error("resultFile can't be open");
 
-    if (resultFile.fail())
+    if (!resultFile)
         throw std::runtime_error("resultFile failed");
 
-    colorsOFF();
-    print(resultFile);
-    colorsON(); // not necessary
+    print(resultFile, Colors::OFF());
 }
