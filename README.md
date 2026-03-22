@@ -1,6 +1,6 @@
 # CPU Benchmark
 
-CPU benchmarking tool written in C++20 to measure single-core and multi-core performance.
+CPU benchmarking tool written in C++23 to measure single-core and multi-core performance.
 
 ## Features
 
