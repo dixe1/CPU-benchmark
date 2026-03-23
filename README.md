@@ -23,7 +23,7 @@ num: Base number used in computation
 
 ## Benchmark Results
 
-> All results measured with default config: `cycles = 7000000000`, `num = 3.123141`  
+> All results measured with default config  
 > Higher score = better performance
 
 | CPU | Cores / Threads | Multi-Core | Single-Core |
