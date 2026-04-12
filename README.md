@@ -34,6 +34,9 @@ num: Base number used in computation
 
 > Want to add your result? Open an issue or pull request with your CPU model and score!
 
+## Dependencies
+ 
+This project uses the [ConfigLoader](https://github.com/dixe1/config-loader) library for parsing the configuration file.
 
 ## Requirements
 
