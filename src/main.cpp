@@ -27,12 +27,16 @@ int main()
     if(app.loadConfig("config/config.txt") != 0)
         return 0;
 
+
+    // debug
+    for (const auto& [key, val] : app.getConfig())
+        std::cerr << key << " : " << val.type().name() << "\n";
+
     bool repeatMenu = true;
     while (repeatMenu)
     {
         clearTerminal();
         printMenu();
-
 
         // Print errors to the user, if there is no errors print new line
         if (userInput.getError().empty())

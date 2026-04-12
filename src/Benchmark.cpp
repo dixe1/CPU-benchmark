@@ -8,16 +8,17 @@
 #include <chrono>
 #include <cmath>
 #include <atomic>
+#include <any>
 
 #include "Benchmark.h"
 
 // outputNumbers is static that's why do this
 std::atomic<int> Benchmark::outputNumbers{};
 
-void Benchmark::calculate(const size_t threads, const bool stressTest, const std::unordered_map<std::string, std::string>& config)
+void Benchmark::calculate(const size_t threads, const bool stressTest, const std::unordered_map<std::string, std::any>& config)
 {
-    const uint64_t cycles = std::floor(std::stoull(config.at("cycles")) / threads);
-    const double num = std::stod(config.at("num"));
+    const auto cycles = std::any_cast<long long>(config.at("cycles")) / threads;
+    const auto num = std::any_cast<double>(config.at("num"));
 
     double j{};
     double sum{};
@@ -46,7 +47,7 @@ void Benchmark::calculate(const size_t threads, const bool stressTest, const std
     outputNumbers += static_cast<int>(sum);
 }
 
-double Benchmark::startBenchmark(size_t threadsToUse, bool stressTest,const std::unordered_map<std::string, std::string>& config)
+double Benchmark::startBenchmark(size_t threadsToUse, bool stressTest,const std::unordered_map<std::string, std::any>& config)
 {
     std::vector<std::thread> threads;
     threads.reserve(threadsToUse);

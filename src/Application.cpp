@@ -3,30 +3,15 @@
 //
 #include <thread>
 #include <cmath>
+#include <any>
 
 #include "Application.h"
-
-#include <iostream>
-
 #include "ConfigLoader.h"
 #include "Benchmark.h"
 
 int Application::loadConfig(const std::string &fileName)
 {
-    try
-    {
-        config = ConfigLoader::load(fileName);
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-
-        // Prevent from closing window
-        std::cin.ignore();
-        std::cin.get();
-
-        return -1;
-    }
+    config = ConfigLoader::load(fileName);
 
     return 0;
 }
@@ -63,7 +48,7 @@ void Application::stressTestSingleCore()
 
 void Application::calculatePoints()
 {
-    const uint64_t cycles = std::stoull(config.at("cycles"));
+    const auto cycles = std::any_cast<long long>(config.at("cycles"));
     const double points = static_cast<double>(cycles) / benchmarkDuration * 1e-6;
     benchmarkPoints = static_cast<int>(std::round(points));
 }
@@ -78,7 +63,7 @@ int Application::getBenchmarkPoints() const
     return benchmarkPoints;
 }
 
-const std::unordered_map<std::string, std::string>& Application::getConfig() const
+const std::unordered_map<std::string, std::any>& Application::getConfig() const
 {
     return config;
 }

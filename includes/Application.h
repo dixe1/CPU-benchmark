@@ -6,13 +6,14 @@
 #include <string>
 #include <atomic>
 #include <unordered_map>
+#include <any>
 
 class Application
 {
 private:
     double benchmarkDuration{};
     int benchmarkPoints{};
-    std::unordered_map<std::string, std::string> config;
+    std::unordered_map<std::string, std::any> config;
     std::atomic<bool> isBenchmarkRunning = true;
 
     void calculatePoints();
@@ -28,6 +29,6 @@ public:
 
     double getBenchmarkDuration() const;
     int getBenchmarkPoints() const;
-    const std::unordered_map<std::string, std::string>& getConfig() const;
+    const std::unordered_map<std::string, std::any>& getConfig() const;
     bool getIsBenchmarkRunning() const;
 };
