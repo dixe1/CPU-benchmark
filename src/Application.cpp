@@ -13,6 +13,10 @@ int Application::loadConfig(const std::string &fileName)
 {
     config = ConfigLoader::load(fileName);
 
+    // ConfigLoader returns empty list if cannot find file
+    if (config.empty())
+        return 1;
+
     return 0;
 }
 
