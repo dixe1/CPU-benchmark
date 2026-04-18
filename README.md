@@ -1,5 +1,14 @@
 # CPU Benchmark
 
+<p align="left">
+<img src="https://badgen.net/badge/icon/Windows/4E4E4E?icon=windows&label=&labelColor=4E4E4E" alt="Windows">
+<img src="https://badgen.net/badge/icon/Linux/4E4E4E?icon=linux&label=&labelColor=4E4E4E" alt="Windows">
+<img src="https://badgen.net/badge/icon/macOS/4E4E4E?icon=apple&label=&labelColor=4E4E4E" alt="Windows">
+</p>
+
+<img src="https://img.shields.io/badge/language-C++-00599C?logo=c%2B%2B" alt="C++">
+<img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT">
+
 CPU benchmarking tool written in C++23 to measure single-core and multi-core performance.
 
 ## Features
