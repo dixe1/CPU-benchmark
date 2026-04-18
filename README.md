@@ -6,8 +6,10 @@
 <img src="https://badgen.net/badge/icon/macOS/4E4E4E?icon=apple&label=&labelColor=4E4E4E" alt="Windows">
 </p>
 
+<p>
 <img src="https://img.shields.io/badge/language-C++-00599C?logo=c%2B%2B" alt="C++">
 <img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT">
+</p>
 
 CPU benchmarking tool written in C++23 to measure single-core and multi-core performance.
 
