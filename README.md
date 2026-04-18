@@ -8,6 +8,7 @@
 
 <p>
 <img src="https://img.shields.io/badge/language-C++-00599C?logo=c%2B%2B" alt="C++">
+<img src="https://img.shields.io/badge/build-CMake-3eae2b?logo=cmake&logoColor=white" alt="CMake">
 <img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT">
 </p>
 
