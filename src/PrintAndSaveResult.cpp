@@ -38,7 +38,7 @@ namespace
 
 void printAndSaveResult(const Application& app)
 {
-    auto print = [&](std::ostream& out,const Colors& c)
+    auto output = [&](std::ostream& out,const Colors& c)
     {
         auto header = [&]()
         {
@@ -79,15 +79,13 @@ void printAndSaveResult(const Application& app)
     };
 
     // Print to console
-    print(std::cout, Colors::ON());
+    output(std::cout, Colors::ON());
 
-    // Save to file
+
     std::ofstream resultFile("Result.log");
-    if (!resultFile.is_open())
-        throw std::runtime_error("resultFile can't be open");
-
     if (!resultFile)
         throw std::runtime_error("resultFile failed");
 
-    print(resultFile, Colors::OFF());
+    // Save to file
+    output(resultFile, Colors::OFF());
 }
