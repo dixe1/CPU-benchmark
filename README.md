@@ -85,3 +85,6 @@ cmake --build build
 Move folder "config" from "CPU-Benchmark" to folder where is your binary
 
 
+## License
+
+This project is licensed under the MIT License.
