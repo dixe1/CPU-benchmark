@@ -18,12 +18,12 @@ CPU benchmarking tool written in C++23 to measure single-core and multi-core per
 
 ### Normal:
 
-$N = \frac{\text{Config::cycles}}{\text{threads}}$
-$$\sum_{i=0}^{N-1} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\right)$$
+$\Large N = \frac{\text{Config::cycles}}{\text{threads}}$
+$$\Large \sum_{i=0}^{N-1} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\right)$$
 
 ### Stress test:
 
-$$\sum_{i=0}^{\infty} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\right)$$
+$$\Large \sum_{i=0}^{\infty} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\right)$$
 
 ## Benchmark Results
 
