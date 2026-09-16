@@ -3,12 +3,12 @@
 //
 
 #include <iostream>
-#include <unordered_map>
 #include <fstream>
 #include <format>
 #include <vector>
 #include "PrintAndSaveResult.h"
 #include "GetCPUName.h"
+#include "Config.h"
 
 namespace
 {
@@ -54,11 +54,11 @@ void printAndSaveResult(const Application& app)
         };
         auto cycles = [&]()
         {
-            return std::format("{}{}cycles{}: {}\n", c.BOLD, c.YELLOW, c.RESET, std::any_cast<long long>(app.getConfig().at("cycles")));
+            return std::format("{}{}cycles{}: {}\n", c.BOLD, c.YELLOW, c.RESET, Config::cycles);
         };
         auto num = [&]()
         {
-            return std::format("{}{}num{}: {}\n\n", c.BOLD, c.YELLOW, c.RESET, std::any_cast<double>(app.getConfig().at("num")));
+            return std::format("{}{}num{}: {}\n\n", c.BOLD, c.YELLOW, c.RESET, Config::num);
         };
         auto duration = [&]()
         {

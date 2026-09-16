@@ -13,15 +13,10 @@ class Application
 private:
     double benchmarkDuration{};
     int benchmarkPoints{};
-    std::unordered_map<std::string, std::any> config;
     std::atomic<bool> isBenchmarkRunning = true;
 
     void calculatePoints();
 public:
-
-    int loadConfig(const std::string& fileName);
-
-
     void benchmarkMultiCore();
     void benchmarkSingleCore();
     void stressTestMultiCore();

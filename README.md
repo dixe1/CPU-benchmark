@@ -25,14 +25,6 @@ CPU benchmarking tool written in C++23 to measure single-core and multi-core per
 ![menu](images/menu.png)
 ![menu](images/result.png)
 
-## Configuration
-Edit config/config.txt to adjust benchmarking parameters:
-- cycles = 7000000000
-- num = 3.123141
-
-cycles: Total iterations to perform  
-num: Base number used in computation
-
 ## Benchmark Results
 
 > All results measured with default config  
@@ -46,9 +38,6 @@ num: Base number used in computation
 
 > Want to add your result? Open an issue or pull request with your CPU model and score!
 
-## Dependencies
- 
-This project uses the [ConfigLoader](https://github.com/dixe1/config-loader) library for parsing the configuration file.
 
 ## Requirements
 
@@ -81,8 +70,6 @@ cmake -G "Visual Studio 16 2019" -A x64 . -B build
 cmake -G "Unix Makefiles" -B build
 cmake --build build
 ```
-### 3. Move config folder to built
-Move folder "config" from "CPU-Benchmark" to folder where is your binary
 
 
 ## License

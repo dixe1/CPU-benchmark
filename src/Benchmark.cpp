@@ -2,23 +2,20 @@
 // Created by bartek on 2/24/26.
 //
 #include <cstddef>
-#include <unordered_map>
 #include <vector>
 #include <thread>
 #include <chrono>
 #include <cmath>
 #include <atomic>
-#include <any>
 
 #include "Benchmark.h"
+#include "Config.h"
 
 // outputNumbers is static that's why do this
 std::atomic<int> Benchmark::outputNumbers{};
 
-void Benchmark::calculate(const size_t threads, const bool stressTest, const std::unordered_map<std::string, std::any>& config)
+void Benchmark::calculate(const size_t threads, const bool stressTest)
 {
-    const auto cycles = std::any_cast<long long>(config.at("cycles")) / threads;
-    const auto num = std::any_cast<double>(config.at("num"));
 
     double j{};
     double sum{};
@@ -28,7 +25,7 @@ void Benchmark::calculate(const size_t threads, const bool stressTest, const std
     {
         while (true)
         {
-            const volatile double r = std::sin(num + j + 1);
+            const volatile double r = std::sin(Config::num + j + 1);
             sum += r;
             j += 0.001;
         }
@@ -37,9 +34,9 @@ void Benchmark::calculate(const size_t threads, const bool stressTest, const std
     // Normal benchmark
     else
     {
-        for (uint64_t i{}; i < cycles; i++)
+        for (uint64_t i{}; i < Config::cycles / threads; i++)
         {
-            const volatile double r = std::sin(num + j + 1);
+            const volatile double r = std::sin(Config::num + j + 1);
             sum += r;
             j += 0.001;
         }
@@ -47,14 +44,14 @@ void Benchmark::calculate(const size_t threads, const bool stressTest, const std
     outputNumbers += static_cast<int>(sum);
 }
 
-double Benchmark::startBenchmark(size_t threadsToUse, bool stressTest,const std::unordered_map<std::string, std::any>& config)
+double Benchmark::startBenchmark(size_t threadsToUse, bool stressTest)
 {
     std::vector<std::thread> threads;
     threads.reserve(threadsToUse);
 
     const auto start = std::chrono::high_resolution_clock::now();
     for (size_t i{}; i < threadsToUse; i++)
-        threads.emplace_back(&Benchmark::calculate, threadsToUse, stressTest, std::ref(config));
+        threads.emplace_back(&Benchmark::calculate, threadsToUse, stressTest);
 
     for (auto& thread : threads)
         if (thread.joinable())

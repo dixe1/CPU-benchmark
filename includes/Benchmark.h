@@ -9,12 +9,12 @@
 class Benchmark
 {
 private:
-    static void calculate(size_t threads, bool stressTest, const std::unordered_map<std::string, std::any>& config);
+    static void calculate(size_t threads, bool stressTest);
 
     // Add results from all threads
     // To prevent compiler optimizations
     static std::atomic<int> outputNumbers;
 
 public:
-    static double startBenchmark(size_t threadsToUse, bool stressTest, const std::unordered_map<std::string, std::any>& config);
+    static double startBenchmark(size_t threadsToUse, bool stressTest);
 };

@@ -24,9 +24,6 @@ int main()
     // Set userInput
     GetUserInput userInput;
 
-    if(app.loadConfig("config/config.txt") != 0)
-        return 0;
-
     bool repeatMenu = true;
     while (repeatMenu)
     {
