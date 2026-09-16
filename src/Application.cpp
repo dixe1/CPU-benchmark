@@ -1,8 +1,8 @@
 //
 // Created by bartek on 2/27/26.
 //
-#include <thread>
 #include <cmath>
+#include <thread>
 
 #include "Application.h"
 #include "Benchmark.h"
@@ -11,7 +11,8 @@
 void Application::benchmarkMultiCore()
 {
     isBenchmarkRunning = true;
-    benchmarkDuration = Benchmark::startBenchmark(std::thread::hardware_concurrency(), false);
+    benchmarkDuration =
+        Benchmark::startBenchmark(std::thread::hardware_concurrency(), false);
     isBenchmarkRunning = false;
 
     calculatePoints();
@@ -28,7 +29,8 @@ void Application::benchmarkSingleCore()
 void Application::stressTestMultiCore()
 {
     isBenchmarkRunning = true;
-    benchmarkDuration = Benchmark::startBenchmark(std::thread::hardware_concurrency(), true);
+    benchmarkDuration =
+        Benchmark::startBenchmark(std::thread::hardware_concurrency(), true);
     isBenchmarkRunning = false;
 }
 void Application::stressTestSingleCore()
@@ -40,7 +42,8 @@ void Application::stressTestSingleCore()
 
 void Application::calculatePoints()
 {
-    const double points = static_cast<double>(Config::cycles) / benchmarkDuration * 1e-6;
+    const double points =
+        static_cast<double>(Config::cycles) / benchmarkDuration * 1e-6;
     benchmarkPoints = static_cast<int>(std::round(points));
 }
 

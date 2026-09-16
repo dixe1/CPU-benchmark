@@ -1,12 +1,12 @@
 //
 // Created by bartek on 2/24/26.
 //
-#include <cstddef>
-#include <vector>
-#include <thread>
+#include <atomic>
 #include <chrono>
 #include <cmath>
-#include <atomic>
+#include <cstddef>
+#include <thread>
+#include <vector>
 
 #include "Benchmark.h"
 #include "Config.h"

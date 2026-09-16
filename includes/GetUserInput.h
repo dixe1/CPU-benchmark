@@ -7,10 +7,10 @@
 
 class GetUserInput
 {
-    private:
+  private:
     std::string error;
 
-    public:
+  public:
     char getUserInput();
     [[nodiscard]] const std::string& getError() const;
     void setError(const std::string& error_);

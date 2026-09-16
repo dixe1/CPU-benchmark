@@ -14,30 +14,33 @@
 
 CPU benchmarking tool written in C++23 to measure single-core and multi-core performance.
 
-## Features
+## Core algorytm
 
-- Multi-core and single-core benchmarking
-- Loading bar animation while benchmarking
-- Results printed to console and saved to `Result.log`
-- Configurable cycles and number using `config/config.txt`
-- Stress test
+### Normal:
 
-![menu](images/menu.png)
-![menu](images/result.png)
+$N = \frac{\text{Config::cycles}}{\text{threads}}$
+$$\sum_{i=0}^{N-1} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\right)$$
+
+### Stress test:
+
+$$\sum_{i=0}^{\infty} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\right)$$
 
 ## Benchmark Results
 
 > All results measured with default config  
 > Higher score = better performance
 
-| CPU | Cores / Threads | Multi-Core | Single-Core |
-|-----|----------------|-----------|------------|
-| Intel Core i5-12400F | 6 / 12 | 973 | 159 |
-| | | | |
-
+| CPU                  | Cores / Threads | Multi-Core | Single-Core |
+|----------------------|-----------------|------------|-------------|
+| Intel Core i5-12400F | 6 / 12          | 973        | 159         |
+|                      |                 |            |             |
 
 > Want to add your result? Open an issue or pull request with your CPU model and score!
 
+## User interface
+
+![menu](images/menu.png)
+![menu](images/result.png)
 
 ## Requirements
 
@@ -48,6 +51,7 @@ CPU benchmarking tool written in C++23 to measure single-core and multi-core per
 ## Build
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/dixe1/CPU-Benchmark.git
 cd CPU-Benchmark
@@ -56,21 +60,23 @@ cd CPU-Benchmark
 ### 2. Build Project
 
 #### For Visual Studio 2022:
+
 ```bash
 cmake -G "Visual Studio 17 2022" -A x64 . -B build
 ```
 
 #### For Visual Studio 2019:
+
 ```bash
 cmake -G "Visual Studio 16 2019" -A x64 . -B build
 ```
 
 #### For Linux / macOS (Unix Makefiles):
+
 ```bash
 cmake -G "Unix Makefiles" -B build
 cmake --build build
 ```
-
 
 ## License
 

@@ -3,20 +3,21 @@
 //
 
 #pragma once
-#include <string>
-#include <atomic>
-#include <unordered_map>
 #include <any>
+#include <atomic>
+#include <string>
+#include <unordered_map>
 
 class Application
 {
-private:
+  private:
     double benchmarkDuration{};
     int benchmarkPoints{};
     std::atomic<bool> isBenchmarkRunning = true;
 
     void calculatePoints();
-public:
+
+  public:
     void benchmarkMultiCore();
     void benchmarkSingleCore();
     void stressTestMultiCore();

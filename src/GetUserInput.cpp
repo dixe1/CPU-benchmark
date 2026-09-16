@@ -29,7 +29,7 @@ const std::string& GetUserInput::getError() const
     return error;
 }
 
-void GetUserInput::setError(const std::string &error_)
+void GetUserInput::setError(const std::string& error_)
 {
     error = error_;
 }

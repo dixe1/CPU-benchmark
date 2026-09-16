@@ -1,22 +1,22 @@
-#include <iostream>
-#include <thread>
 #include <chrono>
+#include <iostream>
 #include <string>
+#include <thread>
 
-#include "Menu.h"
-#include "GetUserInput.h"
-#include "ClearTerminal.h"
-#include "PrintAndSaveResult.h"
-#include "LoadingBar.h"
 #include "Application.h"
+#include "ClearTerminal.h"
 #include "EnableANSI.h"
+#include "GetUserInput.h"
+#include "LoadingBar.h"
+#include "Menu.h"
+#include "PrintAndSaveResult.h"
 
 int main()
 {
-    // Enable ANSI in console if is on Windows
-    #ifdef _WIN32
-        enableANSI();
-    #endif
+// Enable ANSI in console if is on Windows
+#ifdef _WIN32
+    enableANSI();
+#endif
 
     // Set app
     Application app;
@@ -34,7 +34,8 @@ int main()
         if (userInput.getError().empty())
             std::cout << '\n';
         else
-            std::cout << "\033[90m" << userInput.getError() << "\033[0m\n";    // gray color
+            std::cout << "\033[90m" << userInput.getError()
+                      << "\033[0m\n"; // gray color
 
         std::cout << ">> "; // This is that think before cursor
 
@@ -43,28 +44,28 @@ int main()
 
         switch (userInput.getUserInput())
         {
-            case '1':
-                startThread = std::thread(&Application::benchmarkMultiCore, &app);
-                break;
+        case '1':
+            startThread = std::thread(&Application::benchmarkMultiCore, &app);
+            break;
 
-            case '2':
-                startThread = std::thread(&Application::benchmarkSingleCore, &app);
-                break;
+        case '2':
+            startThread = std::thread(&Application::benchmarkSingleCore, &app);
+            break;
 
-            case '3':
-                startThread = std::thread(&Application::stressTestMultiCore, &app);
-                break;
+        case '3':
+            startThread = std::thread(&Application::stressTestMultiCore, &app);
+            break;
 
-            case '4':
-                startThread = std::thread(&Application::stressTestSingleCore, &app);
-                break;
+        case '4':
+            startThread = std::thread(&Application::stressTestSingleCore, &app);
+            break;
 
-            case '5':
-                return 0;
-            default:
-                if (userInput.getError().empty())
-                    userInput.setError(" - Invalid option - ");
-                continue;
+        case '5':
+            return 0;
+        default:
+            if (userInput.getError().empty())
+                userInput.setError(" - Invalid option - ");
+            continue;
         }
         repeatMenu = false;
 

@@ -8,18 +8,18 @@
 // linux default works
 
 #ifdef _WIN32
-    #include <windows.h>
+#include <windows.h>
 #endif
 
 void enableANSI()
 {
-    #ifdef _WIN32
-        HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-        DWORD dwMode = 0;
-        GetConsoleMode(hOut, &dwMode);
-        dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-        SetConsoleMode(hOut, dwMode);
+#ifdef _WIN32
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD dwMode = 0;
+    GetConsoleMode(hOut, &dwMode);
+    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    SetConsoleMode(hOut, dwMode);
 
-        SetConsoleOutputCP(CP_UTF8);    // Set UTF
-    #endif
+    SetConsoleOutputCP(CP_UTF8); // Set UTF
+#endif
 }

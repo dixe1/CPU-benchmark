@@ -2,71 +2,72 @@
 // Created by bartek on 2/24/26.
 //
 
-#include <iostream>
-#include <fstream>
-#include <format>
-#include <vector>
 #include "PrintAndSaveResult.h"
-#include "GetCPUName.h"
 #include "Config.h"
+#include "GetCPUName.h"
+#include <format>
+#include <fstream>
+#include <iostream>
+#include <vector>
 
 namespace
 {
-    struct Colors
-    {
-        // Colors
-        const std::string GREEN   = "\033[32m";
-        const std::string CYAN    = "\033[36m";
-        const std::string YELLOW  = "\033[33m";
+struct Colors
+{
+    // Colors
+    const std::string GREEN = "\033[32m";
+    const std::string CYAN = "\033[36m";
+    const std::string YELLOW = "\033[33m";
 
-        // Other
-        const std::string RESET   = "\033[0m";
-        const std::string DIM     = "\033[2m";
-        const std::string BOLD    = "\033[1m";
+    // Other
+    const std::string RESET = "\033[0m";
+    const std::string DIM = "\033[2m";
+    const std::string BOLD = "\033[1m";
 
-        static Colors ON()
-        {
-            return {};
-        }
-        static Colors OFF()
-        {
-            return {"","","","","",""};
-        }
-    };
-}
-
+    static Colors ON() { return {}; }
+    static Colors OFF() { return {"", "", "", "", "", ""}; }
+};
+} // namespace
 
 void printAndSaveResult(const Application& app)
 {
-    auto output = [&](std::ostream& out,const Colors& c)
+    auto output = [&](std::ostream& out, const Colors& c)
     {
         auto header = [&]()
         {
-            return std::format("{}{}BENCHMARK REPORT{}\n",c.BOLD, c.GREEN, c.RESET);
+            return std::format("{}{}BENCHMARK REPORT{}\n", c.BOLD, c.GREEN,
+                               c.RESET);
         };
         auto separator = [&]()
         {
-            return std::format("{}──────────────────────────────────────────{}\n", c.DIM, c.RESET);
+            return std::format(
+                "{}──────────────────────────────────────────{}\n", c.DIM,
+                c.RESET);
         };
         auto CPU = [&]()
         {
-            return std::format("{}{}CPU{}: {}\n", c.BOLD, c.YELLOW, c.RESET, getCPUName());
+            return std::format("{}{}CPU{}: {}\n", c.BOLD, c.YELLOW, c.RESET,
+                               getCPUName());
         };
         auto cycles = [&]()
         {
-            return std::format("{}{}cycles{}: {}\n", c.BOLD, c.YELLOW, c.RESET, Config::cycles);
+            return std::format("{}{}cycles{}: {}\n", c.BOLD, c.YELLOW, c.RESET,
+                               Config::cycles);
         };
         auto num = [&]()
         {
-            return std::format("{}{}num{}: {}\n\n", c.BOLD, c.YELLOW, c.RESET, Config::num);
+            return std::format("{}{}num{}: {}\n\n", c.BOLD, c.YELLOW, c.RESET,
+                               Config::num);
         };
         auto duration = [&]()
         {
-            return std::format("{}{}duration{}: {} seconds\n", c.BOLD, c.YELLOW, c.RESET, app.getBenchmarkDuration());
+            return std::format("{}{}duration{}: {} seconds\n", c.BOLD, c.YELLOW,
+                               c.RESET, app.getBenchmarkDuration());
         };
         auto score = [&]()
         {
-            return std::format("{}{}score{}: {} points\n", c.BOLD, c.YELLOW, c.RESET, app.getBenchmarkPoints());
+            return std::format("{}{}score{}: {} points\n", c.BOLD, c.YELLOW,
+                               c.RESET, app.getBenchmarkPoints());
         };
 
         out << header();
@@ -80,7 +81,6 @@ void printAndSaveResult(const Application& app)
 
     // Print to console
     output(std::cout, Colors::ON());
-
 
     std::ofstream resultFile("Result.log");
     if (!resultFile)
