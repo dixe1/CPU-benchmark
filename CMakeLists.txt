@@ -16,5 +16,4 @@ add_executable(${PROJECT_NAME}
         src/Application.cpp
         src/EnableANSI.cpp
         src/GetCPUName.cpp
-        includes/Config.h
 )
