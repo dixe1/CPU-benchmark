@@ -14,7 +14,7 @@
 
 CPU benchmarking tool written in C++23 to measure single-core and multi-core performance.
 
-## Core algorytm
+## Core algorithm
 
 ### Normal:
 
