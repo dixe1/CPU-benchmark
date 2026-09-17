@@ -34,7 +34,7 @@ void section(const std::string& str)
 
 void printMenu()
 {
-    header("v1.1.0");
+    header("v1.3.0");
 
     section("Benchmark");
     option('1', "Multi core");
