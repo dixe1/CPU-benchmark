@@ -27,7 +27,7 @@ $$\large \sum_{i=0}^{\infty} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\r
 
 ## Benchmark Results
 
-> All results measured with default config  
+> All results measured with default config.  
 > Higher score = better performance
 
 | CPU                    | Cores / Threads | Multi-Core | Single-Core |
@@ -40,7 +40,7 @@ $$\large \sum_{i=0}^{\infty} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\r
 ## User interface
 
 You can start benchmark from the terminal like `/Benchmark --benchmark --multi-core` or open program without any arguments
-and use build-in menu  
+and use build-in menu.  
 For more info: [arguments documentation](docs/COMMAND_LINE_ARGUMENTS.md)
 
 ---
