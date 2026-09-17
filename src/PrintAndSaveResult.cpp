@@ -9,9 +9,24 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <nlohmann/json.hpp>
+
+using nlohmann::json;
 
 namespace
 {
+    void saveJSON(const Application& app, std::ofstream& resultFile)
+    {
+        json result;
+        result["cpu"] = getCPUName();
+        result["cycles"] = Config::cycles;
+        result["num"] = Config::num;
+        result["duration"] = app.getBenchmarkDuration();
+        result["score"] = app.getBenchmarkPoints();
+        resultFile << result;
+    }
+
+
 struct Colors
 {
     // Colors
@@ -79,13 +94,22 @@ void printAndSaveResult(const Application& app)
         out << score();
     };
 
-    // Print to console
+    // Print result to console
     output(std::cout, Colors::ON());
 
-    std::ofstream resultFile("Result.log");
-    if (!resultFile)
-        throw std::runtime_error("resultFile failed");
+    // Save result to nice formated file
+    {
+        std::ofstream result("result.log");
+        if (!result)
+            throw std::runtime_error("'result.log' failed");
 
-    // Save to file
-    output(resultFile, Colors::OFF());
+        output(result, Colors::OFF());
+    }
+
+
+    // Save result to JSON file
+    std::ofstream result("result.json");
+    if (!result)
+        throw std::runtime_error("'result.json' failed");
+    saveJSON(app, result);
 }
