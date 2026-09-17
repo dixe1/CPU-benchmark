@@ -11,5 +11,7 @@
 ## Submitting a Pull Request (PR)
 
 - **Format commit messages clearly:**
-    - `feat: add player movement support`
-    - `fix: resolve memory leak in renderer`
+    - `refactor: change naming and remove dead code`
+    - `fix: delete leftover debug code`
+    - `docs: fix spelling mistake
+`
