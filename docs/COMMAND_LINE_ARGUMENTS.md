@@ -12,7 +12,7 @@
 | `cores`  | `--multi-core`, `--single-core` |
 
 > [!IMPORTANT]
-> `type` have to be typed **first**, `cores` **secound**.
+> `type` has to be typed **first**, `cores` **second**.
 
 ### Examples:
 
@@ -22,3 +22,6 @@
 ./Benchmark --benchmark   --single-core
 ./Benchmark --stress-test --single-core
 ```
+
+> If you pass an invalid argument, the program will exit.  
+> If you pass more than two arguments the program will start like with no arguments

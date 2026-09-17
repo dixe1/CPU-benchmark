@@ -39,6 +39,11 @@ $$\large \sum_{i=0}^{\infty} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\r
 
 ## User interface
 
+You can start benchmark from terminal like `/Benchmark --benchmark   --multi-core` or open app without any arguments and use build-in menu  
+For more info: [arguments documentation](docs/COMMAND_LINE_ARGUMENTS.md)
+
+---
+
 ![menu](images/menu.png)
 ![menu](images/result.png)
 

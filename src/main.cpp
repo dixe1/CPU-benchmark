@@ -24,8 +24,8 @@ enum class RunMode
 
 RunMode handleArguments(char* argv[])
 {
-    std::string typeArg = argv[1];
-    std::string coresArg = argv[2];
+    const std::string typeArg = argv[1];
+    const std::string coresArg = argv[2];
 
     if (typeArg == "--benchmark" && coresArg == "--multi-core")
         return RunMode::BENCHMARK_MULTI;
