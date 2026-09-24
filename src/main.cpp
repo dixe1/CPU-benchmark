@@ -1,8 +1,8 @@
 #include <chrono>
 #include <iostream>
+#include <print>
 #include <string>
 #include <thread>
-#include <print>
 
 #include "Application.h"
 #include "ClearTerminal.h"
