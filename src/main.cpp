@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <thread>
+#include <print>
 
 #include "Application.h"
 #include "ClearTerminal.h"
@@ -66,12 +67,11 @@ int main(int argc, char* argv[])
 
         // Print errors to the user, if there is no errors print new line
         if (userInput.getError().empty())
-            std::cout << '\n';
+            std::println();
         else
-            std::cout << "\033[90m" << userInput.getError()
-                      << "\033[0m\n"; // gray color
+            std::println("\033[90m{}\033[0m", userInput.getError());
 
-        std::cout << ">> "; // This is that think before cursor
+        std::print(">> "); // This is that think before cursor
 
         // Thread for starting benchmark
         std::thread startThread;

@@ -4,7 +4,7 @@
 
 #include <array>
 #include <chrono>
-#include <iostream>
+#include <print>
 #include <string>
 #include <thread>
 
@@ -21,7 +21,7 @@ void startLoadingBar(const Application& app)
     {
         if (i > 5)
             i = 0;
-        std::cout << loading[i++] << '\n';
+        std::println("{}", loading[i++]);
         std::this_thread::sleep_for(std::chrono::milliseconds(300));
         clearTerminal();
     }
