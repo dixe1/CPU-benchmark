@@ -32,6 +32,7 @@ $$\large \sum_{i=0}^{\infty} \sin\left (\text{Config::num} + i \cdot 0.001 + 1\r
 
 | CPU                    | Cores / Threads | Multi-Core | Single-Core |
 |------------------------|-----------------|------------|-------------|
+| Intel Core i7-11700F   | 8 / 16          | 1397       | 172         |
 | Intel Core i5-12400F   | 6 / 12          | 973        | 159         |
 | Intel Core 2 Duo T6670 | 2 / 2           | 30         | 16          |
 
