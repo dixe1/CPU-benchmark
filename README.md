@@ -47,7 +47,7 @@ For details, please check the [Architecture Documentation](docs/ARCHITECTURE.md)
 You can start benchmark from the terminal like `/Benchmark --benchmark --multi-core` or open program without any
 arguments
 and use build-in menu.  
-For more info: [arguments documentation](docs/COMMAND_LINE_ARGUMENTS.md).
+For more info: [Arguments Documentation](docs/COMMAND_LINE_ARGUMENTS.md).
 
 ---
 
